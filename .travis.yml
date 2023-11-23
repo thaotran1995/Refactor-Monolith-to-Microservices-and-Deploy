@@ -14,4 +14,5 @@ before_install:
 
 install:
   - docker-compose -f udagram-deployment/docker-compose-build.yaml build --parallel
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker-compose -f udagram-deployment/docker-compose-build.yaml push
